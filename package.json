@@ -1,0 +1,30 @@
+{
+  "name": "apache_emu",
+  "version": "0.1.0",
+  "description": "An emulator for the Apache front server for Aptana Jaxer written with Nodejs and Express",
+  "main": "index.js",
+  "dependencies": {
+    "etag": "^1.8.1",
+    "express": "^4.17.1",
+    "serve-index": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsdCollins/ApacheEmu.git"
+  },
+  "keywords": [
+    "apache",
+    "jaxer",
+    "nodejs"
+  ],
+  "author": "Benjamin Collins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wsdCollins/ApacheEmu/issues"
+  },
+  "homepage": "https://github.com/wsdCollins/ApacheEmu#readme"
+}
