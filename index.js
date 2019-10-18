@@ -173,6 +173,10 @@ app.post('/jaxer-callback', function(req, res) {
 			}
 
 		});
+	
+		client.on("error", function(err) {
+			return res.status(500).end(err.toString());
+		});
 
 	});
 
@@ -348,7 +352,10 @@ function pass_to_jaxer(packet, callback) {
 	const pong = Buffer.from([0, 0, 3, 0, 4, 1]);
 	const client = new net.Socket();
 
-	client.connect(JAXER_PORT, '127.0.0.1', function() {
+	client.connect(JAXER_PORT, '127.0.0.1', function(err) {
+		if(err) {
+			return callback(err, null);
+		}
 		console.log("ping");
 		client.write(ping);
 	});
@@ -369,6 +376,9 @@ function pass_to_jaxer(packet, callback) {
 
 	});
 	
+	client.on("error", function(err) {
+		return callback(err, null);
+	});
 
 }
 
@@ -444,7 +454,7 @@ function handle_file(req, res) {
 
 			pass_to_jaxer(packet, function(err, pack) {
 				if(err) {
-					return res.status(500).end("Could jaxer proxy err");
+					return res.status(500).end(err.toString());
 				}
 
 				console.log(pack);
